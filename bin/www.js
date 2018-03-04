@@ -1,0 +1,35 @@
+let { spawn } =  require('child_process');
+let fs = require('fs');
+let yargs = require('yargs');
+
+let argv = yargs.option('d', {
+    alias: 'root',
+    demand: 'false',
+    type: 'string',
+    default: process.cwd(),
+    description: '静态文件根目录',
+}).option('o', {
+    alias: 'host',
+    demand: 'false',
+    default: 'localhost',
+    type: 'string',
+    description: '配置监听的主机',
+}).option('p', {
+    alias: 'port',
+    demand: 'false',
+    default: 8080,
+    type: 'number',
+    description: '配置监听端口',
+})
+    .usage('seven [options]')
+    .example('seven -d / -p 9090 -o localhost')
+    .help('h')
+    .argv;
+
+let serverPath = '../src/child.js';
+let child = spawn('node', [serverPath], {
+    detached: true,
+    stdio: ['ignore', process.stdout, "ignore"]
+})
+
+child.unref();
