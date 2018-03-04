@@ -1,6 +1,6 @@
 {
   "name": "seventh-static",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "静态文件服务器\r 静态文件服务\r 实现缓存\r 实现断点续传，分块获取\r 实现压缩\r 实现命令行工具\r 实现配置，读取命令行的参数\r 加密和权限功能",
   "main": "index.js",
   "scripts": {
